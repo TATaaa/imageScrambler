@@ -18,7 +18,6 @@ class scrambler():
                 r,g,b = RGBim.getpixel((x, y))
                 intKey = intKey + x + y
 
-                print rDiff, gDiff, bDiff
                 r = self.__RGBRangeConst(r + rDiff)
                 g = self.__RGBRangeConst(g + gDiff)
                 b = self.__RGBRangeConst(b + bDiff)
@@ -40,7 +39,6 @@ class scrambler():
                 r,g,b = RGBim.getpixel((x, y))
                 intKey = intKey + x + y
                 
-                print rDiff, gDiff, bDiff
                 r = abs(r - rDiff)
                 g = abs(g - gDiff)
                 b = abs(b - bDiff)
