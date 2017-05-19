@@ -6,6 +6,8 @@ import math
 
 class scrambler():
     
+    MAX_RGB = 255
+
     def imageScram(self, im, key):
         RGBim = im.convert("RGB")
         imSize = RGBim.size
@@ -60,16 +62,16 @@ class scrambler():
         while Num != 0:
             List.append(Num % 10)
             Num /= 10
-        
+            
         return List
 
     def __getRGBDiff(self, seedNum):
         random.seed(seedNum)
-        return random.randint(0, 256)
+        return random.randint(0, self.MAX_RGB)
 
     def __RGBRangeConst(self, num):
-        if num > 256:
-            return num - 256
+        if num > self.MAX_RGB:
+            return num - self.MAX_RGB
         else :
             return num
 
