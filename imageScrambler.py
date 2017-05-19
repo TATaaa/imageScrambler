@@ -49,9 +49,10 @@ class scrambler():
         return im
     
     def __getRGBDiffs(self, intKey, keyDigitList, x, y):
-        rDiff = self.__getRGBDiff(intKey + ((keyDigitList[(len(keyDigitList) - 1)] + 1) % (x + y + 1) - (keyDigitList[(len(keyDigitList) - 1)] + 1) % (y + x + 1)))
-        gDiff = self.__getRGBDiff(intKey + ((keyDigitList[(len(keyDigitList) - 1)] + 1) % (x + x + 1) - (keyDigitList[(len(keyDigitList) - 1)] + 1) % (y + y + 1)))
-        bDiff = self.__getRGBDiff(intKey + ((keyDigitList[(len(keyDigitList) - 1)] + 1) % (x + x + 1) - (keyDigitList[(len(keyDigitList) - 1)] + 1) % (y + x + 1)))
+        seedFunc = lambda a, b, c, d: intKey + ((keyDigitList[(len(keyDigitList) - 1)] + 1) % (a + b + 1) - (keyDigitList[(len(keyDigitList) - 1)] + 1) % (c + d + 1))
+        rDiff = self.__getRGBDiff(seedFunc(x, y, x, x))
+        gDiff = self.__getRGBDiff(seedFunc(x, x, y, y))
+        bDiff = self.__getRGBDiff(seedFunc(x, x, y, x))
         return rDiff, gDiff, bDiff
 
     def __intToList(self, Num):
