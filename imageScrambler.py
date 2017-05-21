@@ -7,6 +7,7 @@ import math
 class scrambler():
     
     MAX_RGB = 255
+    MIN_RGB = 0
 
     def imageScram(self, im, key):
         RGBim = im.convert("RGB")
@@ -20,9 +21,9 @@ class scrambler():
                 r,g,b = RGBim.getpixel((x, y))
                 intKey = intKey + x + y
 
-                r = self.__RGBRangeConst(r + rDiff)
-                g = self.__RGBRangeConst(g + gDiff)
-                b = self.__RGBRangeConst(b + bDiff)
+                r = self.__RGBRangeConstMax(r + rDiff)
+                g = self.__RGBRangeConstMax(g + gDiff)
+                b = self.__RGBRangeConstMax(b + bDiff)
 
                 im.putpixel((x, y), (r, g, b, 0))
 
@@ -41,9 +42,9 @@ class scrambler():
                 r,g,b = RGBim.getpixel((x, y))
                 intKey = intKey + x + y
                 
-                r = abs(r - rDiff)
-                g = abs(g - gDiff)
-                b = abs(b - bDiff)
+                r = self.__RGBRangeConstMin(r - rDiff)
+                g = self.__RGBRangeConstMin(g - gDiff)
+                b = self.__RGBRangeConstMin(b - bDiff)
 
                 im.putpixel((x, y), (r, g, b, 0))
 
@@ -69,9 +70,15 @@ class scrambler():
         random.seed(seedNum)
         return random.randint(0, self.MAX_RGB)
 
-    def __RGBRangeConst(self, num):
+    def __RGBRangeConstMax(self, num):
         if num > self.MAX_RGB:
             return num - self.MAX_RGB
+        else :
+            return num
+
+    def __RGBRangeConstMin(self, num):
+        if num < self.MIN_RGB:
+            return num + self.MAX_RGB
         else :
             return num
 
