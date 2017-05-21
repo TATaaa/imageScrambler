@@ -2,7 +2,6 @@
 from PIL import Image
 import uuid
 import random
-import math
 
 class scrambler():
     
