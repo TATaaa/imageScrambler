@@ -6,7 +6,7 @@ import math
 
 class scrambler():
     
-    MAX_RGB = 255
+    MAX_RGB = 256
     MIN_RGB = 0
 
     def imageScram(self, im, key):
@@ -71,7 +71,7 @@ class scrambler():
         return random.randint(0, self.MAX_RGB)
 
     def __RGBRangeConstMax(self, num):
-        if num > self.MAX_RGB:
+        if num >= self.MAX_RGB:
             return num - self.MAX_RGB
         else :
             return num
