@@ -9,16 +9,16 @@ Scrambleをした場合ハッシュが吐き出されます、そのハッシュ
 例
 --------
 before:   
-![before](http://imgur.com/AYDPaC2)   
+![before](http://imgur.com/AYDPaC2.png)   
 
 terminal:   
-![terminal](http://imgur.com/dM0EZ9C)   
+![terminal](http://imgur.com/dM0EZ9C.png)   
 
 scram:   
-![scram](http://imgur.com/iX8bc7D)   
+![scram](http://imgur.com/iX8bc7D.png)   
 
 terminal:   
-![terminal](http://imgur.com/jOE5rgu)   
+![terminal](http://imgur.com/jOE5rgu.png)   
 
 after:   
-![after](http://imgur.com/7503I08)   
+![after](http://imgur.com/7503I08.png)   
