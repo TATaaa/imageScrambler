@@ -52,7 +52,7 @@ class scrambler():
         return im
     
     def __getRGBDiffs(self, intKey, keyDigitList, x, y):
-        seedFunc = lambda a, b, c, d: intKey + ((keyDigitList[(len(keyDigitList) - 1)] + 1) % (a + b + 1) - (keyDigitList[(len(keyDigitList) - 1)] + 1) % (c + d + 1))
+        seedFunc = lambda a, b, c, d: intKey + ((keyDigitList[(a + b + c * d) % (len(keyDigitList) - 1)]) % (a + b + c * d + 1) - (keyDigitList[(a * b + c + d) % (len(keyDigitList) - 1)]) % (a * b + c + d + 1))
         rDiff = self.__getRGBDiff(seedFunc(x, y, x, x))
         gDiff = self.__getRGBDiff(seedFunc(x, x, y, y))
         bDiff = self.__getRGBDiff(seedFunc(x, x, y, x))
@@ -98,13 +98,11 @@ if __name__ == "__main__":
         key = uuid.uuid4().hex
         im = scram.imageScram(im, key)
         print "key: " + key
-        im.show()
-        im.save(args[1] + "_after.png")
+        im.save(args[1] + "_Scram.png")
     elif choice == 2:
         print "pls give me uuid"
         key = raw_input("> ")
         im = scram.unImageScram(im, key)
-        im.show()
-        im.save(args[1] + "_before.png")
+        im.save(args[1] + "_unScram.png")
     else :
         print "The choice you entered is not correct"
