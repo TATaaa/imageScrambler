@@ -6,7 +6,7 @@ How to usage
 
 Scrambleをした場合ハッシュが吐き出されます、そのハッシュはunScramble時に使うので取っておいてください。
 
-例
+Example
 --------
 ※↓のscramはアップロードしたときに圧縮されているので元に戻らないよ！    
 before:   
