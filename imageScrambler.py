@@ -26,7 +26,7 @@ class scrambler():
 
                 im.putpixel((x, y), (r, g, b, 0))
 
-        print "finish."
+        print("finish.")
         return im
 
     def unImageScram(self, im, key):
@@ -47,7 +47,7 @@ class scrambler():
 
                 im.putpixel((x, y), (r, g, b, 0))
 
-        print "finish"
+        print("finish")
         return im
     
     def __getRGBDiffs(self, intKey, keyDigitList, x, y):
@@ -89,19 +89,19 @@ if __name__ == "__main__":
 
     im = Image.open(args[1])
 
-    print "Scramble  : 1"
-    print "unScranble: 2"
-    choice = input("> ")
+    print("Scramble  : 1")
+    print("unScranble: 2")
+    choice = int(input("> "))
 
     if choice == 1:
         key = uuid.uuid4().hex
         im = scram.imageScram(im, key)
-        print "key: " + key
+        print("key: " + key)
         im.save(args[1] + "_Scram.png")
     elif choice == 2:
-        print "pls give me uuid"
-        key = raw_input("> ")
+        print("pls give me uuid")
+        key = input("> ")
         im = scram.unImageScram(im, key)
         im.save(args[1] + "_unScram.png")
     else :
-        print "The choice you entered is not correct"
+        print("The choice you entered is not correct")
